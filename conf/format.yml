@@ -1,0 +1,26 @@
+# 侯选 built-in 单值类型: int, uint32, uint64, float, string
+# 侯选 built-in 数组类型: int_array, uint32_array, uint64_array, float_array, string_array
+# 侯选自定义单值类型: TestData
+
+columns:
+
+  - name: id
+    type: int
+
+  - name: level
+    type: string
+
+  - name: name
+    type: string
+
+  - name: rank
+    type: uint32
+
+  - name: average
+    type: float
+
+  - name: enumeration
+    type: float_array
+
+  - name: description
+    type: TestData
