@@ -10,6 +10,7 @@
 
 #include "data_define/builtin/base_type.h"
 #include "data_define/builtin/string.h"
+#include "data_define/custom_data/test_data.h"
 #include "register/dict_register.h"
 
 namespace parser {
@@ -45,6 +46,9 @@ typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse(
  **/
 template <>
 int parse<String>(const std::string& input, std::shared_ptr<BaseType>& output);
+
+template <>
+int parse<TestData>(const std::string& input, std::shared_ptr<BaseType>& output);
 
 /**
  * @brief 函数模板，解析数组

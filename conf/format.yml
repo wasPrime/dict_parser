@@ -24,3 +24,6 @@ columns:
 
   - name: description
     type: TestData
+
+  - name: description_array
+    type: TestData_array

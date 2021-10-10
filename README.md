@@ -58,7 +58,7 @@ cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
     public:
         // Define data in here
 
-        // 自定义类型解析函数
+        // 自定义数据类型解析函数
         static int parse(const std::string& input, std::shared_ptr<BaseType>& output) {
             // pass
             return 0
@@ -70,17 +70,34 @@ cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
     };
     ```
 
-3. 在 `src/dict_format/dict_format.cc` 中注册数据类型：
+3. 注册数据类型：
 
     ```C++
+    // src/dict_format/dict_format.h
     #include "data_define/custom_data/demo_data.h"
 
+    // 声明 DemoData 的 parse 特化模版
+    template <>
+    int parse<DemoData>(const std::string& input, std::shared_ptr<BaseType>& output);
+    ```
+
+    ```C++
+    // src/dict_format/dict_format.cc
+    // 注册解析方法
     REGISTER_DATA_FORMAT(DemoData, DemoData::parse);
+    // parse_array 可直接调用 DemoData 的 parse 特化模版
+    REGISTER_DATA_FORMAT(DemoData_array, parse_array<DemoData>);
+
+    // 借用 DemoData::parse 实现 parse 特化模版
+    template <>
+    int parse<DemoData>(const std::string& input, std::shared_ptr<BaseType>& output) {
+        return DemoData::parse(input, output);
+    }
     ```
 
 ### 使用
 
-1. 在 `conf/format.yml` 中可设定 `DemeData` 数据类型了，如：
+1. 在 `conf/format.yml` 中可设定 `DemeData` 数据类型，如：
 
     ```YAML
     columns:
@@ -89,6 +106,9 @@ cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
 
     - name: demo_data_column
       type: DemoData
+
+    - name: demo_data_array_column
+      type: DemoData_array
     ```
 
 2. 在 `conf/dict_data.txt` 中相应列输入符合 `DemoData` 规定的字符串格式。

@@ -12,7 +12,6 @@
 #include "data_define/builtin/string.h"
 #include "data_define/builtin/uint32.h"
 #include "data_define/builtin/uint64.h"
-#include "data_define/custom_data/test_data.h"
 
 namespace parser {
 
@@ -34,8 +33,9 @@ REGISTER_DATA_FORMAT(string_array, parse_array<String>);
 
 /********************* custom data *********************/
 // 注册单值
-REGISTER_DATA_FORMAT(TestData, TestData::parse);
+REGISTER_DATA_FORMAT(TestData, parse<TestData>);
 // 注册数组
+REGISTER_DATA_FORMAT(TestData_array, parse_array<TestData>);
 /********************* custom data *********************/
 /********************** 注册词表格式 **********************/
 
@@ -77,6 +77,11 @@ int parse<String>(const std::string& input, std::shared_ptr<BaseType>& output) {
     output = data;
 
     return SUCCESS;
+}
+
+template <>
+int parse<TestData>(const std::string& input, std::shared_ptr<BaseType>& output) {
+    return TestData::parse(input, output);
 }
 
 template <typename T>
