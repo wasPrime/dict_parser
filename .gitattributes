@@ -1,0 +1,3 @@
+*.h linguist-language=C++
+*.cc linguist-language=C++
+CMakeLists.txt linguist-language=CMake

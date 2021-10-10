@@ -27,7 +27,7 @@ A dict parser that supports basic data types, custom data types, and arrays.
 5. API 设计友好，做到自解释；
 6. 代码严格遵守百度编码规范；
 7. 代码的可读性和可维护性好；
-8. 实现需要采用 Cmake 工具链并确保可编译通过，输出包括可执行的 demo 程序，以及对应的单测程序，单测有效而且通过。
+8. 实现需要采用 CMake 工具链并确保可编译通过，输出包括可执行的 demo 程序，以及对应的单测程序，单测有效而且通过。
    > 提示，demo 也要符合编码规范；
    > 单元测试必须使用 `gtest`。
 
