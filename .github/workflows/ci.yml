@@ -1,0 +1,23 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  build-and-run-tests:
+    name: "Linux build"
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out git repository
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: cmake build
+        run: |
+          mkdir -p build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=Release ..
+          make -j 4
+      - name: run tests
+        run: |
+          cd build
+          ./test/parser_test
