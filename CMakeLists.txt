@@ -2,6 +2,14 @@
 
 cmake_minimum_required(VERSION 3.0)
 
+# set language std
+set(CMAKE_CXX_STANDARD 17)
+# set language std and Disable fallback to a previous version
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# Disable CXX Syntax EXTENSIONS
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 project(parser VERSION 1.0)
 
 option(PARSER_BUILD_TESTS "Build Parser's unit tests" ON)
@@ -17,18 +25,12 @@ add_subdirectory("third_party/yaml-cpp")
 
 include_directories("src")
 
-# set language std
-set(CMAKE_CXX_STANDARD 17)
-# set language std and Disable fallback to a previous version
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# Disable CXX Syntax EXTENSIONS
-set(CMAKE_CXX_EXTENSIONS OFF)
-
 set(BASIC_CXXFLAGS -g -pipe -fPIC -Wall -Wextra -Werror -pedantic-errors)
 set(EXTRA_WARNINGS -Wnon-virtual-dtor -Wold-style-cast -Woverloaded-virtual -Wsign-promo -Wswitch-default -Wfloat-equal -Wshadow -Wcast-qual -Wextra-semi)
 set(DEFAULT_CXXFLAGS ${BASIC_CXXFLAGS} ${EXTRA_WARNINGS})
-add_compile_options(${DEFAULT_CXXFLAGS})
+# add_compile_options(${DEFAULT_CXXFLAGS})
 
+set(CXXFLAGS_PROD ${DEFAULT_CXXFLAGS} -O3)
 set(CXXFLAGS_TEST ${DEFAULT_CXXFLAGS} -O0 -fno-access-control -fno-omit-frame-pointer -fsanitize=address -fsanitize=undefined)
 
 file(GLOB MAIN_SRC src/main.cc)
@@ -42,6 +44,8 @@ set(APP_SOURCES ${MAIN_SRC} ${GLOB_SOURCES})
 set(BIN_NAME ${PROJECT_NAME})
 
 add_executable(${BIN_NAME} ${APP_SOURCES})
+target_compile_options(${BIN_NAME}
+    PRIVATE ${CXXFLAGS_PROD})
 target_link_libraries(${BIN_NAME} gflags glog yaml-cpp)
 set_target_properties(${BIN_NAME}
     PROPERTIES
@@ -59,6 +63,8 @@ if(PARSER_BUILD_TESTS)
     set(TEST_SOURCES ${TEST_SRC} ${GLOB_SOURCES})
     set(TEST_NAME ${PROJECT_NAME}_test)
     add_executable(${TEST_NAME} ${TEST_SOURCES})
+    target_compile_options(${TEST_NAME}
+        PRIVATE ${CXXFLAGS_PROD})
     target_link_libraries(${TEST_NAME} gtest gflags glog yaml-cpp)
     set_target_properties(${TEST_NAME}
         PROPERTIES
