@@ -16,11 +16,11 @@ option(PARSER_BUILD_TESTS "Build Parser's unit tests" ON)
 
 file(COPY "conf" DESTINATION "./")
 
-# This project is tested using gflags.
+# This project is using gflags.
 add_subdirectory("third_party/gflags")
-# This project is tested using glog.
+# This project is using glog.
 add_subdirectory("third_party/glog")
-# This project is tested using yaml-cpp.
+# This project is using yaml-cpp.
 add_subdirectory("third_party/yaml-cpp")
 
 include_directories("src")
