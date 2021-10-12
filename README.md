@@ -1,5 +1,7 @@
 # Dict Parser
 
+[![ci](https://github.com/wasPrime/dict_parser/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/wasPrime/dict_parser/actions/workflows/ci.yml)
+
 A dict parser that supports basic data types, custom data types, and arrays.
 
 ## 任务描述
