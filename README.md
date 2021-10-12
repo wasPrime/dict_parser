@@ -63,7 +63,7 @@ cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
         // 自定义数据类型解析函数
         static int parse(const std::string& input, std::shared_ptr<BaseType>& output) {
             // pass
-            return 0
+            return 0;
         }
 
         virtual const std::string to_string() const override {
