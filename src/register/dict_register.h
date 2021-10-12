@@ -47,7 +47,7 @@ public:
      * @retval not nullptr  有效
      * @retval nullptr      无效
      **/
-    const DictParseFunc* find_parse_func(const std::string& data_type);
+    const DictParseFunc* find_parse_func(const std::string& data_type) const;
 
 private:
     typedef std::unordered_map<std::string, DictParseFunc> DictParseMap;

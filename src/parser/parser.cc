@@ -26,8 +26,8 @@ int Parser::init(const std::string& format_conf_path, const std::string& format_
     // 解析 columns
     YAML::Node columns = conf["columns"];
     if (!columns.IsSequence()) {
-        LOG(ERROR) << "columns is not a sequence in format conf, node type[" << columns.Type()
-                   << "]";
+        LOG(ERROR) << "columns is not a sequence in format conf, node type["
+                   << yaml_node_type2string(columns.Type()) << "]";
         return FAILURE;
     }
 
@@ -36,7 +36,7 @@ int Parser::init(const std::string& format_conf_path, const std::string& format_
         // column 须为 Map，至少包含 key name 和 type
         if (!column->IsMap()) {
             LOG(ERROR) << "the column node is not a map in format conf, node type["
-                       << column->Type() << "]";
+                       << yaml_node_type2string(column->Type()) << "]";
             return FAILURE;
         }
 
@@ -115,17 +115,8 @@ int Parser::get_conf_value(const YAML::Node& original_node, const std::string& k
         return FAILURE;
     }
 
-    try {
-        value = value_node.as<std::string>();
-    } catch (const YAML::TypedBadConversion<std::string>& typed_string_bad_conversion) {
-        LOG(ERROR) << key << " node cann't be parsed as string, node type[" << value_node.Type()
-                   << "], catch typed_string_bad_conversion[" << typed_string_bad_conversion.what()
-                   << "]";
-        return FAILURE;
-    } catch (const std::exception& exception) {
-        LOG(ERROR) << "column name is not int, catch exception[" << exception.what() << "]";
-        return FAILURE;
-    }
+    // Scalar() 直接取字面字符串值
+    value = value_node.Scalar();
 
     return SUCCESS;
 }
@@ -189,6 +180,18 @@ int Parser::process_line() {
               << Utils::string_join(log_factor_vec.begin(), log_factor_vec.end(), ", ");
 
     return SUCCESS;
+}
+
+const std::string Parser::yaml_node_type2string(YAML::NodeType::value type) const {
+    static std::unordered_map<YAML::NodeType::value, std::string> yaml_node_type_map{
+        {YAML::NodeType::Undefined, "Undefined"},
+        {YAML::NodeType::Null, "Null"},
+        {YAML::NodeType::Scalar, "Scalar"},
+        {YAML::NodeType::Sequence, "Sequence"},
+        {YAML::NodeType::Map, "Map"},
+    };
+    auto iter = yaml_node_type_map.find(type);
+    return iter != yaml_node_type_map.end() ? iter->second : "Unknown";
 }
 
 }  // namespace parser

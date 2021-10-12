@@ -11,6 +11,7 @@
 #include <exception>
 #include <fstream>
 #include <string>
+#include <unordered_map>
 #include <unordered_set>
 
 #include "register/dict_register.h"
@@ -91,6 +92,13 @@ private:
      * @retval -1   失败
      **/
     int process_line();
+
+    /**
+     * @brief  YAML node type 转为 string
+     * @param [in] type YAML node type
+     * @return 转换后的 string
+     **/
+    const std::string yaml_node_type2string(YAML::NodeType::value type) const;
 
 private:
     static Parser _s_instance;  // Parser 单例
