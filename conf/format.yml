@@ -23,7 +23,7 @@ columns:
     type: float_array
 
   - name: description
-    type: TestData
+    type: test_data
 
   - name: description_array
-    type: TestData_array
+    type: test_data_array

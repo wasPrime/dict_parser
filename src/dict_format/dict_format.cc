@@ -25,7 +25,7 @@ REGISTER_DATA_AND_ARRAY(string, String);
 /*********************** built-in ***********************/
 
 /********************* custom data *********************/
-REGISTER_DATA_AND_ARRAY(TestData, TestData);
+REGISTER_DATA_AND_ARRAY(test_data, TestData);
 /********************* custom data *********************/
 /********************** 注册词表格式 **********************/
 

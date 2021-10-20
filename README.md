@@ -87,9 +87,7 @@ cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
     ```C++
     // src/dict_format/dict_format.cc
     // 注册解析方法
-    REGISTER_DATA_FORMAT(DemoData, DemoData::parse);
-    // parse_array 可直接调用 DemoData 的 parse 特化模版
-    REGISTER_DATA_FORMAT(DemoData_array, parse_array<DemoData>);
+    REGISTER_DATA_AND_ARRAY(demo_data, DemoData);
 
     // 借用 DemoData::parse 实现 parse 特化模版
     template <>
