@@ -57,14 +57,24 @@ cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
 2. 实现自定义数据类型，注意须继承于 `BaseType`（位于 `src/data_define/builtin/base_type.h`），意味着至少需要实现 `to_string()` 方法，建议 `parse` 方法设为类静态方法 。示例如下：
 
     ```C++
+    #include <memory>
+
+    #include "data_define/builtin/base_type.h"
+    #include "utils/utils.h"
+
     class DemoData : public BaseType {
     public:
         // Define data in here
 
         // 自定义数据类型解析函数
         static int parse(const std::string& input, std::shared_ptr<BaseType>& output) {
-            // pass
-            return 0;
+            std::shared_ptr<DemoData> p_data = std::make_shared<DemoData>();
+
+            // fill in p_data
+
+            output = p_data;
+
+            return SUCCESS;
         }
 
         virtual const std::string to_string() const override {
