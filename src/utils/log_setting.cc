@@ -32,7 +32,6 @@ int LogSetting::init(const char* process_name, const std::string& log_dir) {
     }
 
     // Initialize Google’s logging library.
-    // FLAGS_alsologtostderr = true;
     FLAGS_stderrthreshold = ::google::ERROR;
     FLAGS_colorlogtostderr = true;
     ::google::InitGoogleLogging(process_name);
