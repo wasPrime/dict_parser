@@ -17,25 +17,15 @@ namespace parser {
 
 /********************** 注册词表格式 **********************/
 /*********************** built-in ***********************/
-// 注册单值
-REGISTER_DATA_FORMAT(int, parse<Int>);
-REGISTER_DATA_FORMAT(uint32, parse<Uint32>);
-REGISTER_DATA_FORMAT(uint64, parse<Uint64>);
-REGISTER_DATA_FORMAT(float, parse<Float>);
-REGISTER_DATA_FORMAT(string, parse<String>);
-// 注册数组
-REGISTER_DATA_FORMAT(int_array, parse_array<Int>);
-REGISTER_DATA_FORMAT(uint32_array, parse_array<Uint32>);
-REGISTER_DATA_FORMAT(uint64_array, parse_array<Uint64>);
-REGISTER_DATA_FORMAT(float_array, parse_array<Float>);
-REGISTER_DATA_FORMAT(string_array, parse_array<String>);
+REGISTER_DATA_AND_ARRAY(int, Int);
+REGISTER_DATA_AND_ARRAY(uint32, Uint32);
+REGISTER_DATA_AND_ARRAY(uint64, Uint64);
+REGISTER_DATA_AND_ARRAY(float, Float);
+REGISTER_DATA_AND_ARRAY(string, String);
 /*********************** built-in ***********************/
 
 /********************* custom data *********************/
-// 注册单值
-REGISTER_DATA_FORMAT(TestData, parse<TestData>);
-// 注册数组
-REGISTER_DATA_FORMAT(TestData_array, parse_array<TestData>);
+REGISTER_DATA_AND_ARRAY(TestData, TestData);
 /********************* custom data *********************/
 /********************** 注册词表格式 **********************/
 
