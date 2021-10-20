@@ -1,6 +1,7 @@
 # Dict Parser
 
 [![ci](https://github.com/wasPrime/dict_parser/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/wasPrime/dict_parser/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A dict parser that supports basic data types, custom data types, and arrays.
 
