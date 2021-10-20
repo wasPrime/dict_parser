@@ -1,33 +1,14 @@
 /**
- * @file    dict_format.cc
+ * @file    dict_format.hpp
  * @author  wenshishi
  * @brief   数据转换
  **/
 
+#pragma once
+
 #include "dict_format.h"
 
-#include "data_define/builtin/array.h"
-#include "data_define/builtin/float.h"
-#include "data_define/builtin/int.h"
-#include "data_define/builtin/string.h"
-#include "data_define/builtin/uint32.h"
-#include "data_define/builtin/uint64.h"
-
 namespace parser {
-
-/********************** 注册词表格式 **********************/
-/*********************** built-in ***********************/
-REGISTER_DATA_AND_ARRAY(int, Int);
-REGISTER_DATA_AND_ARRAY(uint32, Uint32);
-REGISTER_DATA_AND_ARRAY(uint64, Uint64);
-REGISTER_DATA_AND_ARRAY(float, Float);
-REGISTER_DATA_AND_ARRAY(string, String);
-/*********************** built-in ***********************/
-
-/********************* custom data *********************/
-REGISTER_DATA_AND_ARRAY(test_data, TestData);
-/********************* custom data *********************/
-/********************** 注册词表格式 **********************/
 
 template <typename T>
 typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse(
@@ -53,25 +34,6 @@ typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse(
     output = data;
 
     return SUCCESS;
-}
-
-template <>
-int parse<String>(const std::string& input, std::shared_ptr<BaseType>& output) {
-    // 建立指向实际类型的指针
-    std::shared_ptr<String> data = std::make_shared<String>();
-
-    // 组装数据
-    data->value = input;
-
-    // 更新实际指针
-    output = data;
-
-    return SUCCESS;
-}
-
-template <>
-int parse<TestData>(const std::string& input, std::shared_ptr<BaseType>& output) {
-    return TestData::parse(input, output);
 }
 
 template <typename T>

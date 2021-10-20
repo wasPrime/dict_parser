@@ -6,11 +6,11 @@
 
 #pragma once
 
-#include <sstream>
+#include <glog/logging.h>
 
+#include "data_define/builtin/array.h"
 #include "data_define/builtin/base_type.h"
-#include "data_define/builtin/string.h"
-#include "data_define/custom_data/test_data.h"
+#include "data_define/builtin/uint64.h"
 #include "register/dict_register.h"
 
 namespace parser {
@@ -47,20 +47,6 @@ typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse(
     const std::string& input, std::shared_ptr<BaseType>& output);
 
 /**
- * @brief 函数模板，解析单值字符串(模板类型为字符串)
- * @param [in]  input    待解析字符串
- * @param [out] output   解析出的内容
- * @return 是否转换成功
- * @retval  0   成功
- * @retval -1   失败
- **/
-template <>
-int parse<String>(const std::string& input, std::shared_ptr<BaseType>& output);
-
-template <>
-int parse<TestData>(const std::string& input, std::shared_ptr<BaseType>& output);
-
-/**
  * @brief 函数模板，解析数组
  * @param [in]  input    待解析字符串
  * @param [out] output   解析出的内容
@@ -73,3 +59,5 @@ typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse_ar
     const std::string& input, std::shared_ptr<BaseType>& output);
 
 }  // namespace parser
+
+#include "dict_format.hpp"

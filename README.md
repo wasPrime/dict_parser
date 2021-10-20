@@ -76,24 +76,16 @@ cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
 3. 注册数据类型：
 
     ```C++
-    // src/dict_format/dict_format.h
-    #include "data_define/custom_data/demo_data.h"
+    // src/custom_data/demo_data.cc
+    #include "demo_data.h"
+    #include "dict_format/dict_format.h"
 
-    // 声明 DemoData 的 parse 特化模版
-    template <>
-    int parse<DemoData>(const std::string& input, std::shared_ptr<BaseType>& output);
-    ```
-
-    ```C++
-    // src/dict_format/dict_format.cc
-    // 注册解析方法
-    REGISTER_DATA_AND_ARRAY(demo_data, DemoData);
-
-    // 借用 DemoData::parse 实现 parse 特化模版
     template <>
     int parse<DemoData>(const std::string& input, std::shared_ptr<BaseType>& output) {
         return DemoData::parse(input, output);
     }
+
+    REGISTER_DATA_AND_ARRAY(demo_data, DemoData);
     ```
 
 ### 使用
@@ -109,7 +101,7 @@ cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
       type: DemoData
 
     - name: demo_data_array_column
-      type: DemoData_array
+      type: demo_data_array
     ```
 
 2. 在 `conf/dict_data.txt` 中相应列输入符合 `DemoData` 规定的字符串格式。

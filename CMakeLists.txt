@@ -34,12 +34,14 @@ set(CXXFLAGS_PROD ${DEFAULT_CXXFLAGS} -O3)
 set(CXXFLAGS_TEST ${DEFAULT_CXXFLAGS} -O0 -fno-access-control -fno-omit-frame-pointer -fsanitize=address -fsanitize=undefined)
 
 file(GLOB MAIN_SRC src/main.cc)
+file(GLOB BUILTIN_SRC src/data_define/builtin/*.cc)
+file(GLOB CUSTOM_DATA_SRC src/data_define/custom_data/*.cc)
 file(GLOB PARSER_SRC src/parser/*.cc)
 file(GLOB REGISTER_SRC src/register/*.cc)
 file(GLOB DICT_FORMAT_SRC src/dict_format/*.cc)
 file(GLOB UTILS_SRC src/utils/*.cc)
 
-set(GLOB_SOURCES ${PARSER_SRC} ${REGISTER_SRC} ${DICT_FORMAT_SRC} ${UTILS_SRC})
+set(GLOB_SOURCES ${BUILTIN_SRC} ${CUSTOM_DATA_SRC} ${PARSER_SRC} ${REGISTER_SRC} ${DICT_FORMAT_SRC} ${UTILS_SRC})
 set(APP_SOURCES ${MAIN_SRC} ${GLOB_SOURCES})
 set(BIN_NAME ${PROJECT_NAME})
 
