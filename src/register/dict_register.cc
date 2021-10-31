@@ -1,9 +1,3 @@
-/**
- * @file    dict_register.cc
- * @author  wenshishi
- * @brief   数据转换方式注册器
- **/
-
 #include "dict_register.h"
 
 namespace parser {

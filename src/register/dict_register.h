@@ -1,9 +1,3 @@
-/**
- * @file    dict_register.h
- * @author  wenshishi
- * @brief   数据转换方式注册器
- **/
-
 #pragma once
 
 #include <functional>

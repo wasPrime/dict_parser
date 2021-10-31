@@ -1,9 +1,3 @@
-/**
- * @file    string.cc
- * @author  wenshishi
- * @brief   built-in String 类型
- **/
-
 #include "string.h"
 
 #include "dict_format/dict_format.h"

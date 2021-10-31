@@ -1,9 +1,3 @@
-/**
- * @file    utils.h
- * @author  wenshishi
- * @brief   工具类
- **/
-
 #pragma once
 
 #include <sstream>

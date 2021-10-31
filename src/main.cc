@@ -1,9 +1,3 @@
-/**
- * @file    main.cc
- * @author  wenshishi
- * @brief   词表处理主函数
- **/
-
 #include <gflags/gflags.h>
 
 #include <vector>

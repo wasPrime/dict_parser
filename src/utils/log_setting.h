@@ -1,9 +1,3 @@
-/**
- * @file    log_setting.h
- * @author  wenshishi
- * @brief   日志配置器
- **/
-
 #pragma once
 
 #include <string>

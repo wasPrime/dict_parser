@@ -1,9 +1,3 @@
-/**
- * @file    utils.hpp
- * @author  wenshishi
- * @brief   工具类
- **/
-
 #pragma once
 
 #include "utils.h"

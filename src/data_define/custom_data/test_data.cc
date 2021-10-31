@@ -1,9 +1,3 @@
-/**
- * @file    test_data.cc
- * @author  wenshishi
- * @brief   自定义 TestData 类型
- **/
-
 #include "test_data.h"
 
 #include "dict_format/dict_format.h"

@@ -1,9 +1,3 @@
-/**
- * @file    string.h
- * @author  wenshishi
- * @brief   built-in String 类型
- **/
-
 #pragma once
 
 #include "base_type.h"

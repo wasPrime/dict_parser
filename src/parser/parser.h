@@ -1,9 +1,3 @@
-/**
- * @file    parser.h
- * @author  wenshishi
- * @brief   数据转换处理器
- **/
-
 #pragma once
 
 #include <glog/logging.h>

@@ -1,9 +1,3 @@
-/**
- * @file    dict_format.h
- * @author  wenshishi
- * @brief   数据转换
- **/
-
 #pragma once
 
 #include <glog/logging.h>

@@ -1,9 +1,3 @@
-/**
- * @file    uint64.h
- * @author  wenshishi
- * @brief   built-in Uint64 类型
- **/
-
 #pragma once
 
 #include "base_type.h"

@@ -1,9 +1,3 @@
-/**
- * @file    dict_format.hpp
- * @author  wenshishi
- * @brief   数据转换
- **/
-
 #pragma once
 
 #include "dict_format.h"

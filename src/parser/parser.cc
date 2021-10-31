@@ -1,9 +1,3 @@
-/**
- * @file    parser.cc
- * @author  wenshishi
- * @brief   数据转换处理器
- **/
-
 #include "parser.h"
 
 namespace parser {

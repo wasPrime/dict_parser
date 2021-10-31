@@ -1,9 +1,3 @@
-/**
- * @file    uint32.h
- * @author  wenshishi
- * @brief   built-in Uint32 类型
- **/
-
 #pragma once
 
 #include "base_type.h"

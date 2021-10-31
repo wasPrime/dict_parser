@@ -1,9 +1,3 @@
-/**
- * @file    utils.cc
- * @author  wenshishi
- * @brief   工具类
- **/
-
 #include "utils.h"
 
 namespace parser {

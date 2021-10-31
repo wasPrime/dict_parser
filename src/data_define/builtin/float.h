@@ -1,9 +1,3 @@
-/**
- * @file    float.h
- * @author  wenshishi
- * @brief   built-in Float 类型
- **/
-
 #pragma once
 
 #include "base_type.h"

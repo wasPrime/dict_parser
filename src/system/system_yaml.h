@@ -1,6 +1,4 @@
 /**
- * @file    system_yaml.h
- * @author  wenshishi
  * @brief   规避 yaml-cpp 外部库头文件报错
  **/
 

@@ -1,9 +1,3 @@
-/**
- * @file    base_type.h
- * @author  wenshishi
- * @brief   词表数据类型基类
- **/
-
 #pragma once
 
 #include <string>

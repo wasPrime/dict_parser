@@ -1,9 +1,3 @@
-/**
- * @file    array.h
- * @author  wenshishi
- * @brief   built-in Array 类型
- **/
-
 #pragma once
 
 #include <sstream>

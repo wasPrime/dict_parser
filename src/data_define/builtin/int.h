@@ -1,9 +1,3 @@
-/**
- * @file    int.h
- * @author  wenshishi
- * @brief   built-in Int 类型
- **/
-
 #pragma once
 
 #include "base_type.h"

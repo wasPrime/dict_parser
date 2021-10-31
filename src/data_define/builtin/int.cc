@@ -1,9 +1,3 @@
-/**
- * @file    int.cc
- * @author  wenshishi
- * @brief   built-in Int 类型
- **/
-
 #include "int.h"
 
 #include "dict_format/dict_format.h"

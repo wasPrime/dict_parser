@@ -1,9 +1,3 @@
-/**
- * @file    log_setting.cc
- * @author  wenshishi
- * @brief   日志配置器
- **/
-
 #include "log_setting.h"
 
 #include <glog/logging.h>

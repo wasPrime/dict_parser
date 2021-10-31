@@ -1,9 +1,3 @@
-/**
- * @file    test_data.h
- * @author  wenshishi
- * @brief   自定义 TestData 类型
- **/
-
 #pragma once
 
 #include <glog/logging.h>
