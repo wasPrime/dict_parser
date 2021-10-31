@@ -15,7 +15,7 @@ LogSetting ::~LogSetting() {
     }
 }
 
-int LogSetting::init(const char* process_name, const std::string& log_dir) {
+int LogSetting::init(const char* process_name, const std::string& log_dir) const {
     FLAGS_log_dir = log_dir;
     // 确保 log 目录存在（glog 不会自动生成 log 目录）
     std::string make_log_dir_command("mkdir -p " + FLAGS_log_dir);

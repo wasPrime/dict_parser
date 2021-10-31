@@ -10,7 +10,7 @@ class LogSetting {
 public:
     LogSetting();
     ~LogSetting();
-    int init(const char* process_name, const std::string& log_dir);
+    int init(const char* process_name, const std::string& log_dir) const;
 };
 
 }  // namespace parser
