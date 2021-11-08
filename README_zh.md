@@ -107,7 +107,7 @@ cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
     # pass
 
     - name: demo_data_column
-      type: DemoData
+      type: demo_data
 
     - name: demo_data_array_column
       type: demo_data_array

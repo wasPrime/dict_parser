@@ -102,7 +102,7 @@ private:
     uint32_t _cur_line;                       // 当前行数
     std::vector<std::string> _dict_contents;  // 词表当前行各列内容
 
-    DISABLE_CONSTRUCTOR_AND_DESTRUCTOR(Parser)
+    DISABLE_CONSTRUCTOR_AND_DESTRUCTOR(Parser);
 };
 
 }  // namespace parser

@@ -26,7 +26,7 @@ private:                                             \
     TypeName();                                      \
     TypeName(const TypeName&);                       \
     TypeName& operator=(const TypeName&);            \
-    ~TypeName();
+    ~TypeName()
 
 /**
  * @brief 工具类
@@ -54,7 +54,7 @@ public:
                                          const std::string& connector);
 
 private:
-    DISABLE_CONSTRUCTOR_AND_DESTRUCTOR(Utils)
+    DISABLE_CONSTRUCTOR_AND_DESTRUCTOR(Utils);
 };
 
 }  // namespace parser

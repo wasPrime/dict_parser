@@ -50,7 +50,7 @@ private:
      **/
     DictParseMap _parse_map;
 
-    DISABLE_CONSTRUCTOR_AND_DESTRUCTOR(DictMetaRegistry)
+    DISABLE_CONSTRUCTOR_AND_DESTRUCTOR(DictMetaRegistry);
 };
 
 /**
