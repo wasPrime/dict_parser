@@ -2,10 +2,14 @@
 
 #include <glog/logging.h>
 
+#include <sstream>
+
 #include "data_define/builtin/array.h"
 #include "data_define/builtin/base_type.h"
 #include "data_define/builtin/uint64.h"
 #include "register/dict_register.h"
+#include "system/system_boost.h"
+#include "utils/utils.h"
 
 namespace parser {
 

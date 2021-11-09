@@ -33,7 +33,8 @@ typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse(
 template <typename T>
 typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse_array(
     const std::string& input, std::shared_ptr<BaseType>& output) {
-    std::vector<std::string> vec = Utils::string_split(input, ARRAY_DELIMITER);
+    std::vector<std::string> vec;
+    boost::split(vec, input, boost::is_any_of(ARRAY_DELIMITER));
     if (vec.size() != 2) {
         LOG(ERROR) << "failed to parse string[" << input << "] which doesn't match array pattern";
         return FAILURE;
@@ -56,9 +57,10 @@ typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse_ar
     }
 
     // 校验给出数组长度与实际长度是否一致
-    std::vector<std::string> array_element = Utils::string_split(vec[1], ARRAY_DATA_DELIMITER);
-    if (array_element.size() != array_size_uint64->value) {
-        LOG(ERROR) << "array data's size[" << array_element.size()
+    std::vector<std::string> array_element_vec;
+    boost::split(array_element_vec, vec[1], boost::is_any_of(ARRAY_DATA_DELIMITER));
+    if (array_element_vec.size() != array_size_uint64->value) {
+        LOG(ERROR) << "array data's size[" << array_element_vec.size()
                    << "] doesn't match array_size given[" << array_size_uint64->value << "]";
         return FAILURE;
     }
@@ -68,8 +70,8 @@ typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse_ar
     // 解析每个数组元素
     for (uint64_t i = 0; i < array_size_uint64->value; ++i) {
         std::shared_ptr<BaseType> value = nullptr;
-        if (parse<T>(array_element[i], value) != SUCCESS) {
-            LOG(ERROR) << "failed to parse array element[" << array_element[i] << "]";
+        if (parse<T>(array_element_vec[i], value) != SUCCESS) {
+            LOG(ERROR) << "failed to parse array element[" << array_element_vec[i] << "]";
             return FAILURE;
         }
         T* real_value = dynamic_cast<T*>(value.get());

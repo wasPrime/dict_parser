@@ -11,6 +11,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
+      - name: install boost
+        run: sudo apt-get install libboost-all-dev
       - name: cmake build
         run: |
           mkdir -p build

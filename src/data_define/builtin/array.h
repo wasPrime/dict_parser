@@ -1,9 +1,9 @@
 #pragma once
 
-#include <sstream>
 #include <vector>
 
 #include "base_type.h"
+#include "system/system_boost.h"
 
 namespace parser {
 
@@ -14,25 +14,13 @@ public:
     std::vector<T> value;
 
     virtual const std::string to_string() const override {
-        std::stringstream ss;
-
-        ss << "[";
-
-        auto begin = value.begin();
-        auto end = value.end();
-        if (begin != end) {
-            auto elem = begin;
-            ss << elem->to_string();
-            ++elem;
-            for (; elem != end; ++elem) {
-                ss << ",";
-                ss << elem->to_string();
-            }
+        std::vector<std::string> value_str_vec;
+        value_str_vec.reserve(value.size());
+        for (const T& value_element : value) {
+            value_str_vec.emplace_back(value_element.to_string());
         }
 
-        ss << "]";
-
-        return ss.str();
+        return "[" + boost::join(value_str_vec, ", ") + "]";
     }
 
     virtual ~Array() {}

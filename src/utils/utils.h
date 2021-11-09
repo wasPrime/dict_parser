@@ -1,6 +1,5 @@
 #pragma once
 
-#include <sstream>
 #include <string>
 #include <vector>
 
@@ -27,35 +26,6 @@ private:                                             \
     TypeName(const TypeName&);                       \
     TypeName& operator=(const TypeName&);            \
     ~TypeName()
-
-/**
- * @brief 工具类
- **/
-class Utils {
-public:
-    /**
-     * @brief 字符串分割
-     * @param [in] str         原字符串
-     * @param [in] delimiter   分割符
-     * @return 分割后的字符串数组
-     **/
-    static const std::vector<std::string> string_split(const std::string& str,
-                                                       const std::string& delimiter);
-
-    /**
-     * @brief 字符串连接
-     * @param [in] begin        范围首位置
-     * @param [in] end          范围末位置
-     * @param [in] connector    连接符
-     * @return 连接后的字符串
-     **/
-    template <typename Iter>
-    static const std::string string_join(const Iter begin, const Iter end,
-                                         const std::string& connector);
-
-private:
-    DISABLE_CONSTRUCTOR_AND_DESTRUCTOR(Utils);
-};
 
 }  // namespace parser
 

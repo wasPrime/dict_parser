@@ -23,6 +23,15 @@ add_subdirectory("third_party/glog")
 # This project is using yaml-cpp.
 add_subdirectory("third_party/yaml-cpp")
 
+# The project needs to install boost library.
+# The install commands in different platforms are below:
+# MacOs:    brew install boost
+# Ubuntu:   sudo apt-get install libboost-all-dev
+find_package(Boost COMPONENTS REQUIRED)
+message("Boost_INCLUDE_DIR" ${Boost_INCLUDE_DIR})
+include_directories(${Boost_INCLUDE_DIR})
+link_libraries(${Boost_LIBRARIES})
+
 include_directories("src")
 
 set(BASIC_CXXFLAGS -g -pipe -fPIC -Wall -Wextra -Werror -pedantic-errors -pthread)

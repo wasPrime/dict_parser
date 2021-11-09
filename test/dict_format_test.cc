@@ -9,6 +9,7 @@
 #include "data_define/builtin/uint32.h"
 #include "data_define/builtin/uint64.h"
 #include "data_define/custom_data/test_data.h"
+#include "system/system_boost.h"
 #include "utils/utils.h"
 
 namespace parser {
@@ -74,19 +75,23 @@ TEST(DictFormatTest, ParseString) {
 }
 
 TEST(DictFormatTest, ParseArrayInt) {
-    std::vector<int> vec{1, 2, 3};
-    const std::string str =
-        std::to_string(vec.size()) + ":" + Utils::string_join(vec.begin(), vec.end(), ",");
+    std::vector<int> int_vec{1, 2, 3};
+    std::vector<std::string> str_vec;
+    str_vec.reserve(int_vec.size());
+    for (const int& i : int_vec) {
+        str_vec.emplace_back(std::to_string(i));
+    }
+    const std::string str = std::to_string(int_vec.size()) + ":" + boost::join(str_vec, ",");
     std::shared_ptr<BaseType> data = nullptr;
     int ret = parse_array<Int>(str, data);
     ASSERT_EQ(ret, SUCCESS);
 
     Array<Int>* data_array_int = dynamic_cast<Array<Int>*>(data.get());
     ASSERT_NE(data_array_int, nullptr);
-    ASSERT_EQ(data_array_int->value.size(), vec.size());
+    ASSERT_EQ(data_array_int->value.size(), int_vec.size());
 
     for (int i = 0, n = data_array_int->value.size(); i < n; ++i) {
-        ASSERT_EQ(data_array_int->value[i].value, vec[i]);
+        ASSERT_EQ(data_array_int->value[i].value, int_vec[i]);
     }
 }
 

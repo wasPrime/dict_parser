@@ -9,6 +9,7 @@
 #include <unordered_set>
 
 #include "register/dict_register.h"
+#include "system/system_boost.h"
 #include "system/system_yaml.h"
 
 namespace parser {

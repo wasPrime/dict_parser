@@ -140,7 +140,7 @@ int Parser::read_line(const std::string& delimiter) {
     std::string line;
     std::getline(_fin, line);
     // 将当前行分割成列
-    _dict_contents = Utils::string_split(line, delimiter);
+    boost::split(_dict_contents, line, boost::is_any_of(delimiter));
 
     return SUCCESS;
 }
@@ -170,8 +170,7 @@ int Parser::process_line() {
         log_factor_vec.emplace_back(_col_meta_vec[i].name + ":" + value->to_string());
     }
 
-    LOG(INFO) << "line[" << _cur_line << "]"
-              << Utils::string_join(log_factor_vec.begin(), log_factor_vec.end(), ", ");
+    LOG(INFO) << "line[" << _cur_line << "]" << boost::join(log_factor_vec, ", ");
 
     return SUCCESS;
 }
