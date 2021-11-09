@@ -25,13 +25,14 @@ add_subdirectory("third_party/yaml-cpp")
 
 include_directories("src")
 
-set(BASIC_CXXFLAGS -g -pipe -fPIC -Wall -Wextra -Werror -pedantic-errors)
+set(BASIC_CXXFLAGS -g -pipe -fPIC -Wall -Wextra -Werror -pedantic-errors -pthread)
 set(EXTRA_WARNINGS -Wnon-virtual-dtor -Wold-style-cast -Woverloaded-virtual -Wsign-promo -Wswitch-default -Wfloat-equal -Wshadow -Wcast-qual -Wextra-semi)
 set(DEFAULT_CXXFLAGS ${BASIC_CXXFLAGS} ${EXTRA_WARNINGS})
 # add_compile_options(${DEFAULT_CXXFLAGS})
 
 set(CXXFLAGS_PROD ${DEFAULT_CXXFLAGS} -O3)
-set(CXXFLAGS_TEST ${DEFAULT_CXXFLAGS} -O0 -fno-access-control -fno-omit-frame-pointer -fsanitize=address -fsanitize=undefined)
+set(CXXFLAGS_TEST ${DEFAULT_CXXFLAGS} -O0 -fsanitize=address -fsanitize=undefined -fno-access-control -fno-omit-frame-pointer)
+set(LDFLAGS_TEST -fsanitize=address -fsanitize=undefined)
 
 file(GLOB MAIN_SRC src/main.cc)
 file(GLOB BUILTIN_SRC src/data_define/builtin/*.cc)
@@ -66,8 +67,10 @@ if(PARSER_BUILD_TESTS)
     set(TEST_NAME ${PROJECT_NAME}_test)
     add_executable(${TEST_NAME} ${TEST_SOURCES})
     target_compile_options(${TEST_NAME}
-        PRIVATE ${CXXFLAGS_PROD})
+        PRIVATE ${CXXFLAGS_TEST})
     target_link_libraries(${TEST_NAME} gtest gflags glog yaml-cpp)
+    target_link_options(${TEST_NAME}
+        PRIVATE ${LDFLAGS_TEST})
     set_target_properties(${TEST_NAME}
         PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/test"
