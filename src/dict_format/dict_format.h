@@ -19,8 +19,7 @@ namespace parser {
  * @param [in] PARSE_FUNC   解析函数
  **/
 #define REGISTER_DATA_FORMAT(DATA_TYPE, PARSE_FUNC) \
-    static DictRegister register_##DATA_TYPE(       \
-        #DATA_TYPE, std::bind(PARSE_FUNC, std::placeholders::_1, std::placeholders::_2))
+    static DictRegister register_##DATA_TYPE(#DATA_TYPE, PARSE_FUNC)
 
 /**
  * @brief 注册指定数据类型及其数组的解析函数
