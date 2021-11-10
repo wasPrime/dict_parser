@@ -27,7 +27,7 @@ add_subdirectory("third_party/yaml-cpp")
 # The install commands in different platforms are below:
 # MacOs:    brew install boost
 # Ubuntu:   sudo apt-get install libboost-all-dev
-find_package(Boost COMPONENTS REQUIRED)
+find_package(Boost REQUIRED COMPONENTS system)
 message("Boost_INCLUDE_DIR" ${Boost_INCLUDE_DIR})
 include_directories(${Boost_INCLUDE_DIR})
 link_libraries(${Boost_LIBRARIES})
