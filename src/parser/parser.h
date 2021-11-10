@@ -24,7 +24,7 @@ public:
      **/
     struct ColMeta {
         ColMeta(std::string col_name, std::string col_type, const DictParseFunc* col_parse_func)
-            : name(col_name), type(col_type), parse_func(col_parse_func) {}
+            : name(std::move(col_name)), type(std::move(col_type)), parse_func(col_parse_func) {}
 
         std::string name;                 // 列名
         std::string type;                 // 列数据类型
