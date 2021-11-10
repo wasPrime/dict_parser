@@ -8,9 +8,9 @@ class Uint64 : public BaseType {
 public:
     uint64_t value;
 
-    virtual const std::string to_string() const override { return std::to_string(value); }
+    std::string to_string() const override { return std::to_string(value); }
 
-    virtual ~Uint64() {}
+    ~Uint64() override = default;
 };
 
 }  // namespace parser

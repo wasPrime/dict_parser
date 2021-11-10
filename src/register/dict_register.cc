@@ -2,8 +2,8 @@
 
 namespace parser {
 
-DictMetaRegistry::DictMetaRegistry() {}
-DictMetaRegistry::~DictMetaRegistry() {}
+DictMetaRegistry::DictMetaRegistry() = default;
+DictMetaRegistry::~DictMetaRegistry() = default;
 
 void DictMetaRegistry::register_parse_func(const std::string& data_type,
                                            const DictParseFunc& dict_parse_func) {

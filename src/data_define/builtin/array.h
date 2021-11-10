@@ -13,7 +13,7 @@ class Array : public BaseType {
 public:
     std::vector<T> value;
 
-    virtual const std::string to_string() const override {
+    std::string to_string() const override {
         std::vector<std::string> value_str_vec;
         value_str_vec.reserve(value.size());
         for (const T& value_element : value) {
@@ -23,7 +23,7 @@ public:
         return "[" + boost::join(value_str_vec, ", ") + "]";
     }
 
-    virtual ~Array() {}
+    ~Array() override = default;
 };
 
 }  // namespace parser

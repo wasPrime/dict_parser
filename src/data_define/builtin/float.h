@@ -9,11 +9,9 @@ class Float : public BaseType {
 public:
     float value;
 
-    virtual const std::string to_string() const override {
-        return boost::lexical_cast<std::string>(value);
-    }
+    std::string to_string() const override { return boost::lexical_cast<std::string>(value); }
 
-    virtual ~Float() {}
+    ~Float() override = default;
 };
 
 }  // namespace parser

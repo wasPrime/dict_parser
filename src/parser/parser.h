@@ -35,7 +35,10 @@ public:
      * @brief  获取单例
      * @return Parser 单例
      **/
-    static Parser& get_instance() { return _s_instance; }
+    static Parser& get_instance() {
+        static Parser instance;  // Parser 单例
+        return instance;
+    }
 
     /**
      * @brief 初始化词表格式
@@ -59,7 +62,8 @@ private:
      * @retval  0   成功
      * @retval -1   失败
      **/
-    int get_conf_value(const YAML::Node& original_node, const std::string& key, std::string& value);
+    static int get_conf_value(const YAML::Node& original_node, const std::string& key,
+                              std::string& value);
 
     /**
      * @brief 打开词表文件
@@ -93,14 +97,12 @@ private:
      * @param [in] type YAML node type
      * @return 转换后的 string
      **/
-    const std::string yaml_node_type2string(YAML::NodeType::value type) const;
+    std::string yaml_node_type2string(YAML::NodeType::value type) const;
 
 private:
-    static Parser _s_instance;  // Parser 单例
-
     std::vector<ColMeta> _col_meta_vec;       // 词表格式数组
     std::ifstream _fin;                       // 词表数据输入流
-    uint32_t _cur_line;                       // 当前行数
+    uint32_t _cur_line{};                       // 当前行数
     std::vector<std::string> _dict_contents;  // 词表当前行各列内容
 
     DISABLE_CONSTRUCTOR_AND_DESTRUCTOR(Parser);

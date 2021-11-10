@@ -4,9 +4,9 @@
 
 namespace parser {
 
-LogSetting ::LogSetting() {}
+LogSetting::LogSetting() = default;
 
-LogSetting ::~LogSetting() {
+LogSetting::~LogSetting() {
     // 当单元测试无测试用例时，不会触发 GlobalEnvironment 的 SetUp() 方法，导致
     // google::InitGoogleLogging 未执行。未执行 google::InitGoogleLogging 时触发
     // google::ShutdownGoogleLogging() 会出错。

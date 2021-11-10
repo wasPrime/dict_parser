@@ -46,7 +46,7 @@ typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse_ar
         LOG(ERROR) << "failed to parse string[" << vec[0] << "] as an array size";
         return FAILURE;
     }
-    Uint64* array_size_uint64 = dynamic_cast<Uint64*>(array_size.get());
+    auto* array_size_uint64 = dynamic_cast<Uint64*>(array_size.get());
     if (array_size_uint64 == nullptr) {
         LOG(ERROR) << "dynamic_cast transfer BaseType* to Uint64* failed";
         return FAILURE;

@@ -19,7 +19,7 @@ namespace parser {
  * @param [in] PARSE_FUNC   解析函数
  **/
 #define REGISTER_DATA_FORMAT(DATA_TYPE, PARSE_FUNC) \
-    DictRegister register_##DATA_TYPE(              \
+    static DictRegister register_##DATA_TYPE(       \
         #DATA_TYPE, std::bind(PARSE_FUNC, std::placeholders::_1, std::placeholders::_2))
 
 /**

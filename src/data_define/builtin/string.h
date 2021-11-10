@@ -8,9 +8,9 @@ class String : public BaseType {
 public:
     std::string value;
 
-    virtual const std::string to_string() const override { return value; }
+    std::string to_string() const override { return value; }
 
-    virtual ~String() {}
+    ~String() override = default;
 };
 
 }  // namespace parser

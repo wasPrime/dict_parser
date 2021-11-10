@@ -38,10 +38,12 @@ public:
         return SUCCESS;
     }
 
-    virtual const std::string to_string() const override {
+    std::string to_string() const override {
         std::string ret = "(" + std::to_string(v1) + DELIMITER + v2 + ")";
         return ret;
     }
+
+    ~TestData() override = default;
 
 private:
     static const char DELIMITER = '|';

@@ -10,8 +10,9 @@ namespace parser {
  **/
 class BaseType {
 public:
-    virtual const std::string to_string() const = 0;
-    virtual ~BaseType() {}
+    virtual std::string to_string() const = 0;
+
+    virtual ~BaseType() = default;
 };
 
 }  // namespace parser

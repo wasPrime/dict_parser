@@ -8,9 +8,9 @@ class Uint32 : public BaseType {
 public:
     uint32_t value;
 
-    virtual const std::string to_string() const override { return std::to_string(value); }
+    std::string to_string() const override { return std::to_string(value); }
 
-    virtual ~Uint32() {}
+    ~Uint32() override = default;
 };
 
 }  // namespace parser

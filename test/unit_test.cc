@@ -5,14 +5,14 @@
 
 class GlobalEnvironment : public testing::Environment {
 protected:
-    virtual void SetUp() override {
+    void SetUp() override {
         // 初始化测试日志
         if (log_setting.init("parser_test", "test_log") != parser::SUCCESS) {
             LOG(ERROR) << "failed to init log setting in GlobalEnvironment SetUp";
         }
     }
 
-    virtual void TearDown() override {}
+    void TearDown() override {}
 
 private:
     parser::LogSetting log_setting;

@@ -8,9 +8,9 @@ class Int : public BaseType {
 public:
     int value;
 
-    virtual const std::string to_string() const override { return std::to_string(value); }
+    std::string to_string() const override { return std::to_string(value); }
 
-    virtual ~Int() {}
+    ~Int() override = default;
 };
 
 }  // namespace parser

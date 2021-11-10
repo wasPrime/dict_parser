@@ -2,10 +2,8 @@
 
 namespace parser {
 
-Parser Parser::_s_instance;
-
-Parser::Parser() {}
-Parser::~Parser() {}
+Parser::Parser() = default;
+Parser::~Parser() = default;
 
 int Parser::init(const std::string& format_conf_path, const std::string& format_conf_name) {
     // 读取配置文件
@@ -175,7 +173,7 @@ int Parser::process_line() {
     return SUCCESS;
 }
 
-const std::string Parser::yaml_node_type2string(YAML::NodeType::value type) const {
+std::string Parser::yaml_node_type2string(YAML::NodeType::value type) const {
     static std::unordered_map<YAML::NodeType::value, std::string> yaml_node_type_map{
         {YAML::NodeType::Undefined, "Undefined"},
         {YAML::NodeType::Null, "Null"},

@@ -28,5 +28,3 @@ private:                                             \
     ~TypeName()
 
 }  // namespace parser
-
-#include "utils.hpp"
