@@ -1,15 +1,6 @@
 #pragma once
 
-#include <glog/logging.h>
-
-#include <sstream>
-
-#include "data_define/builtin/array.h"
-#include "data_define/builtin/base_type.h"
-#include "data_define/builtin/uint64.h"
-#include "register/dict_register.h"
-#include "system/system_boost.h"
-#include "utils/utils.h"
+#include "dict_format.hpp"
 
 namespace parser {
 
@@ -31,30 +22,4 @@ namespace parser {
     REGISTER_DATA_FORMAT(TYPE_NAME, parse<DATA_TYPE>); \
     REGISTER_DATA_FORMAT(TYPE_NAME##_array, parse_array<DATA_TYPE>)
 
-/**
- * @brief 函数模板，解析单值
- * @param [in]  input    待解析字符串
- * @param [out] output   解析出的内容
- * @return 是否转换成功
- * @retval 0    成功
- * @retval -1   失败
- **/
-template <typename T>
-typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse(
-    const std::string& input, std::shared_ptr<BaseType>& output);
-
-/**
- * @brief 函数模板，解析数组
- * @param [in]  input    待解析字符串
- * @param [out] output   解析出的内容
- * @return 是否转换成功
- * @retval  0   成功
- * @retval -1   失败
- **/
-template <typename T>
-typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse_array(
-    const std::string& input, std::shared_ptr<BaseType>& output);
-
 }  // namespace parser
-
-#include "dict_format.hpp"

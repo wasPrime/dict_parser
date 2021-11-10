@@ -1,9 +1,26 @@
 #pragma once
 
-#include "dict_format.h"
+#include <glog/logging.h>
+
+#include <sstream>
+
+#include "data_define/builtin/array.h"
+#include "data_define/builtin/base_type.h"
+#include "data_define/builtin/uint64.h"
+#include "register/dict_register.h"
+#include "system/system_boost.h"
+#include "utils/utils.h"
 
 namespace parser {
 
+/**
+ * @brief 函数模板，解析单值
+ * @param [in]  input    待解析字符串
+ * @param [out] output   解析出的内容
+ * @return 是否转换成功
+ * @retval 0    成功
+ * @retval -1   失败
+ **/
 template <typename T>
 typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse(
     const std::string& input, std::shared_ptr<BaseType>& output) {
@@ -30,6 +47,14 @@ typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse(
     return SUCCESS;
 }
 
+/**
+ * @brief 函数模板，解析数组
+ * @param [in]  input    待解析字符串
+ * @param [out] output   解析出的内容
+ * @return 是否转换成功
+ * @retval  0   成功
+ * @retval -1   失败
+ **/
 template <typename T>
 typename std::enable_if<std::is_base_of<BaseType, T>::value, int>::type parse_array(
     const std::string& input, std::shared_ptr<BaseType>& output) {
