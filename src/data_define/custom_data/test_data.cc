@@ -4,6 +4,8 @@
 
 namespace parser {
 
+const std::string TestData::DELIMITER = "|";
+
 /**
  * @brief 函数模板，解析 TestData
  * @param [in]  input    待解析字符串
