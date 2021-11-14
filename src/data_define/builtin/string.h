@@ -8,7 +8,7 @@ class String : public BaseType {
 public:
     std::string value;
 
-    std::string to_string() const override { return value; }
+    [[nodiscard]] std::string to_string() const override { return value; }
 
     ~String() override = default;
 };

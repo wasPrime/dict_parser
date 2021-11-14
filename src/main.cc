@@ -6,11 +6,11 @@
 #include "parser/parser.h"
 #include "utils/log_setting.h"
 
-DEFINE_string(conf_path, "conf", "conf path");
-DEFINE_string(format_conf, "format.yml", "format conf file");
+DEFINE_string(conf_path, "conf", "conf path");                 // NOLINT
+DEFINE_string(format_conf, "format.yml", "format conf file");  // NOLINT
 
-DEFINE_string(data_path, "conf", "data path");
-DEFINE_string(dict_data, "dict_data.txt", "dict data file");
+DEFINE_string(data_path, "conf", "data path");                // NOLINT
+DEFINE_string(dict_data, "dict_data.txt", "dict data file");  // NOLINT
 
 using namespace parser;
 

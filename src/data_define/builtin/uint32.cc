@@ -4,6 +4,6 @@
 
 namespace parser {
 
-REGISTER_DATA_AND_ARRAY(uint32, Uint32);
+REGISTER_DATA_AND_ARRAY(uint32, Uint32);  // NOLINT
 
 }  // namespace parser

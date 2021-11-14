@@ -49,7 +49,7 @@ public:
         return SUCCESS;
     }
 
-    std::string to_string() const override {
+    [[nodiscard]] std::string to_string() const override {
         std::string ret = "(" + std::to_string(v1) + DELIMITER + v2 + ")";
         return ret;
     }

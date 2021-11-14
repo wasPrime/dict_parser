@@ -14,7 +14,7 @@
 
 namespace parser {
 
-TEST(DictFormatTest, ParseInt) {
+TEST(DictFormatTest, ParseInt) {  // NOLINT
     const std::string str = "1";
     std::shared_ptr<BaseType> data = nullptr;
     int ret = parse<Int>(str, data);
@@ -26,55 +26,55 @@ TEST(DictFormatTest, ParseInt) {
     ASSERT_EQ(data_int->value, std::stoi(str));
 }
 
-TEST(DictFormatTest, ParseFloat) {
+TEST(DictFormatTest, ParseFloat) {  // NOLINT
     const std::string str = "1.0";
     std::shared_ptr<BaseType> data = nullptr;
     int ret = parse<Float>(str, data);
     ASSERT_EQ(ret, SUCCESS);
 
-    Float* data_float = dynamic_cast<Float*>(data.get());
+    auto* data_float = dynamic_cast<Float*>(data.get());
     ASSERT_NE(data_float, nullptr);
 
     ASSERT_EQ(data_float->value, std::stof(str));
 }
 
-TEST(DictFormatTest, ParseUint32) {
+TEST(DictFormatTest, ParseUint32) {  // NOLINT
     const std::string str = "1";
     std::shared_ptr<BaseType> data = nullptr;
     int ret = parse<Uint32>(str, data);
     ASSERT_EQ(ret, SUCCESS);
 
-    Uint32* data_uint32 = dynamic_cast<Uint32*>(data.get());
+    auto* data_uint32 = dynamic_cast<Uint32*>(data.get());
     ASSERT_NE(data_uint32, nullptr);
 
     ASSERT_EQ(data_uint32->value, std::stoul(str));  // 没有 std::stou 故使用 std::stoul 代替
 }
 
-TEST(DictFormatTest, ParseUint64) {
+TEST(DictFormatTest, ParseUint64) {  // NOLINT
     const std::string str = "1";
     std::shared_ptr<BaseType> data = nullptr;
     int ret = parse<Uint64>(str, data);
     ASSERT_EQ(ret, SUCCESS);
 
-    Uint64* data_uint64 = dynamic_cast<Uint64*>(data.get());
+    auto* data_uint64 = dynamic_cast<Uint64*>(data.get());
     ASSERT_NE(data_uint64, nullptr);
 
     ASSERT_EQ(data_uint64->value, std::stoul(str));
 }
 
-TEST(DictFormatTest, ParseString) {
+TEST(DictFormatTest, ParseString) {  // NOLINT
     const std::string str = "1 a";
     std::shared_ptr<BaseType> data = nullptr;
     int ret = parse<String>(str, data);
     ASSERT_EQ(ret, SUCCESS);
 
-    String* data_string = dynamic_cast<String*>(data.get());
+    auto* data_string = dynamic_cast<String*>(data.get());
     ASSERT_NE(data_string, nullptr);
 
     ASSERT_EQ(data_string->value, str);
 }
 
-TEST(DictFormatTest, ParseArrayInt) {
+TEST(DictFormatTest, ParseArrayInt) {  // NOLINT
     std::vector<int> int_vec{1, 2, 3};
     std::vector<std::string> str_vec;
     str_vec.reserve(int_vec.size());
@@ -86,7 +86,7 @@ TEST(DictFormatTest, ParseArrayInt) {
     int ret = parse_array<Int>(str, data);
     ASSERT_EQ(ret, SUCCESS);
 
-    Array<Int>* data_array_int = dynamic_cast<Array<Int>*>(data.get());
+    auto* data_array_int = dynamic_cast<Array<Int>*>(data.get());
     ASSERT_NE(data_array_int, nullptr);
     ASSERT_EQ(data_array_int->value.size(), int_vec.size());
 
@@ -95,14 +95,14 @@ TEST(DictFormatTest, ParseArrayInt) {
     }
 }
 
-TEST(DictFormatTest, ParseTestData) {
+TEST(DictFormatTest, ParseTestData) {  // NOLINT
     int v1 = 1;
     std::string v2 = "test_data";
     const std::string str = std::to_string(v1) + "|" + v2;
     std::shared_ptr<BaseType> data = nullptr;
     int ret = TestData::parse(str, data);
     ASSERT_EQ(ret, SUCCESS);
-    TestData* data_test_data = dynamic_cast<TestData*>(data.get());
+    auto* data_test_data = dynamic_cast<TestData*>(data.get());
     ASSERT_NE(data_test_data, nullptr);
     ASSERT_EQ(data_test_data->v1, v1);
     ASSERT_EQ(data_test_data->v2, v2);

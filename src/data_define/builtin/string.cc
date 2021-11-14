@@ -26,6 +26,6 @@ int parse<String>(const std::string& input, std::shared_ptr<BaseType>& output) {
     return SUCCESS;
 }
 
-REGISTER_DATA_AND_ARRAY(string, String);
+REGISTER_DATA_AND_ARRAY(string, String);  // NOLINT
 
 }  // namespace parser

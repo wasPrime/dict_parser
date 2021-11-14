@@ -8,7 +8,7 @@ class Uint64 : public BaseType {
 public:
     uint64_t value;
 
-    std::string to_string() const override { return std::to_string(value); }
+    [[nodiscard]] std::string to_string() const override { return std::to_string(value); }
 
     ~Uint64() override = default;
 };

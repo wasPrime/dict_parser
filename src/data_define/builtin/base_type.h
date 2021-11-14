@@ -10,7 +10,7 @@ namespace parser {
  **/
 class BaseType {
 public:
-    virtual std::string to_string() const = 0;
+    [[nodiscard]] virtual std::string to_string() const = 0;
 
     virtual ~BaseType() = default;
 };

@@ -9,7 +9,9 @@ class Float : public BaseType {
 public:
     float value;
 
-    std::string to_string() const override { return boost::lexical_cast<std::string>(value); }
+    [[nodiscard]] std::string to_string() const override {
+        return boost::lexical_cast<std::string>(value);
+    }
 
     ~Float() override = default;
 };

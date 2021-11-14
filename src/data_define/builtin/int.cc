@@ -4,6 +4,6 @@
 
 namespace parser {
 
-REGISTER_DATA_AND_ARRAY(int, Int);
+REGISTER_DATA_AND_ARRAY(int, Int);  // NOLINT
 
 }  // namespace parser

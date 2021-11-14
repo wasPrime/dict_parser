@@ -8,7 +8,7 @@ class Uint32 : public BaseType {
 public:
     uint32_t value;
 
-    std::string to_string() const override { return std::to_string(value); }
+    [[nodiscard]] std::string to_string() const override { return std::to_string(value); }
 
     ~Uint32() override = default;
 };
